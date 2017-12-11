@@ -87,7 +87,16 @@
 
 - (void)contentSizeChanged
 {
-    CHGInputAccessoryView *accessoryView = (CHGInputAccessoryView *)[self.customView superview];
+    NSUInteger count = 0;
+    UIView* view = self.customView;
+    while (count < 10) {
+        view = view.superview;
+        if (view != nil && [view isKindOfClass:[CHGInputAccessoryView class]]) {
+            break;
+        }
+        count++;
+    }
+    CHGInputAccessoryView *accessoryView = (CHGInputAccessoryView *)view;
     
     [accessoryView updateHeight];
 }
