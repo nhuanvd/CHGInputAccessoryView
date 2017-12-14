@@ -202,7 +202,7 @@
                 [flexibleSizeItems addObject:item];
             } else {
                 UIView *itemView = [item valueForKey:@"view"];
-                itemWidth += CGRectGetWidth(itemView.frame) + itemMargin;
+                itemWidth += itemMargin + (itemView ? CGRectGetWidth(itemView.frame) : item.width);
             }
         }
     }
